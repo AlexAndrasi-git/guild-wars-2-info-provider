@@ -39,8 +39,9 @@ def get_daily_crafting_list():
 def get_remaining_world_bosses(formatted_bosses, get_world_bosses_of_specific_account):
     remaining_world_bosses = []
     eliminated_bosses = get_world_bosses_of_specific_account.json()
+
     for boss in formatted_bosses:
-        if boss not in eliminated_bosses:
+        if boss.lower() not in [eliminated_boss.lower() for eliminated_boss in eliminated_bosses]:
             remaining_world_bosses.append(boss)
 
     return remaining_world_bosses
