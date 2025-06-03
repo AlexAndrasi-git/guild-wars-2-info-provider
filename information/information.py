@@ -1,6 +1,7 @@
-from guildwars_api import get_daily_world_boss_request, get_daily_chest_request, get_daily_crafting_request
+from guildwars_api import get_daily_world_boss_request, get_daily_chest_request, get_daily_crafting_request, get_world_bosses_of_specific_account
 from datetime import datetime
 
+# General Information
 def get_daily_world_boss_list():
     daily_world_boss_list = get_daily_world_boss_request().json()
 
@@ -34,9 +35,29 @@ def get_daily_crafting_list():
     return formatted_crafts
 
 
-def format_general_daily_information(get_daily_world_boss_list,get_daily_chest_list,get_daily_crafting_list):
-    print(f"The daily objectives to this date: ({datetime.today()}) are the following: \n- World boss list: {get_daily_world_boss_list}\n- Chest list: {get_daily_chest_list}\n- Crafting list: {get_daily_crafting_list}")
+# Specific User Information
+def get_remaining_world_bosses(formatted_bosses, get_world_bosses_of_specific_account):
+    remaining_world_bosses = []
+    eliminated_bosses = get_world_bosses_of_specific_account.json()
+    for boss in formatted_bosses:
+        if boss not in eliminated_bosses:
+            remaining_world_bosses.append(boss)
+
+    return remaining_world_bosses
+
+
+# Formatter and Runner
+def format_general_daily_information(get_daily_world_boss_list, get_daily_chest_list, get_daily_crafting_list, get_remaining_world_bosses):
+    print(
+        f"The daily objectives to this date: ({datetime.today()}) are the following: \n"
+        f"- World boss list: {get_daily_world_boss_list}\n"
+        f"  You still have to eliminate {len(get_remaining_world_bosses)} out of {len(get_daily_world_boss_list)} world bosses: {get_remaining_world_bosses}\n"
+        f"- Chest list: {get_daily_chest_list}\n"
+        f"- Crafting list: {get_daily_crafting_list}")
 
 
 def run_information_for_players():
-    format_general_daily_information(get_daily_world_boss_list(),get_daily_chest_list(),get_daily_crafting_list())
+    format_general_daily_information(get_daily_world_boss_list(),
+                                     get_daily_chest_list(),
+                                     get_daily_crafting_list(),
+                                     get_remaining_world_bosses(get_daily_world_boss_list(),get_world_bosses_of_specific_account()))

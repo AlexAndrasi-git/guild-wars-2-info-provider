@@ -1,5 +1,5 @@
 import requests
-import os
+from config import THIRI_BEARER_TOKEN
 
 # General Endpoints
 def get_daily_world_boss_request():
@@ -13,7 +13,9 @@ def get_daily_chest_request():
 
 
 # Account Related Endpoints
-def get_titles_of_specific_account():
-    user_token = os.getenv("BEARER_TOKEN")
-    return requests.get("https://api.guildwars2.com/v2/account/titles", headers={'Authorization': f'Bearer {user_token}'})
+def get_world_bosses_of_specific_account():
+    return requests.get("https://api.guildwars2.com/v2/account/worldbosses", headers={'Authorization': f'Bearer {THIRI_BEARER_TOKEN}'})
+
+
+
 
