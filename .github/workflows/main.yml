@@ -28,7 +28,7 @@ jobs:
 
     - name: Run API Tests with HTML report
       run: |
-        pytest test_run_all.py -v --html=report.html --self-contained-html
+        python test_run_all.py -v --html=report.html --self-contained-html
 
     - name: Upload HTML Report as Artifact
       uses: actions/upload-artifact@v4
