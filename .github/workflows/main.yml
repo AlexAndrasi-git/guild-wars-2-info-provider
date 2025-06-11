@@ -28,7 +28,9 @@ jobs:
 
     - name: Run API Tests with HTML report
       run: |
-        python test_run_all.py -v --html=report.html --self-contained-html
+        python test_run_all.py
+      env:
+        THIRI_BEARER_TOKEN: ${{ secrets.THIRI_BEARER_TOKEN }}
 
     - name: Upload HTML Report as Artifact
       uses: actions/upload-artifact@v4
