@@ -1,5 +1,7 @@
+import os
+
 import requests
-from config import THIRI_BEARER_TOKEN
+# from config import THIRI_BEARER_TOKEN
 
 # General Endpoints
 def get_daily_world_boss_request():
@@ -22,4 +24,5 @@ def get_gem_to_coin_exchange_rate():
 
 # Account Related Endpoints
 def get_world_bosses_of_specific_account():
-    return requests.get("https://api.guildwars2.com/v2/account/worldbosses", headers={'Authorization': f'Bearer {THIRI_BEARER_TOKEN}'})
+    thiri_bearer_token = os.getenv("THIRI_BEARER_TOKEN")
+    return requests.get("https://api.guildwars2.com/v2/account/worldbosses", headers={'Authorization': f'Bearer {thiri_bearer_token}'})
