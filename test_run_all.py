@@ -4,7 +4,7 @@ import pytest
 
 def run_tests():
     print("Test execution started\n")
-    test_results = pytest.main(["tests"])
+    test_results = pytest.main(["tests", "-v", "--html=report.html", "--self-contained-html"])
 
     if test_results != 0:
         print("There is at least 1 test failure, the information run will not be started!")
