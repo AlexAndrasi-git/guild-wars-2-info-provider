@@ -2,7 +2,7 @@ name: Guild Wars 2 General Info Provider
 
 on:
   schedule:
-    - cron: '0 9,21 * * *'
+    - cron: '0 9,13,18,21 * * *'
   workflow_dispatch:
 
 jobs:
