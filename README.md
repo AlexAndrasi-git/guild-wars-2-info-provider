@@ -11,6 +11,4 @@ Requirements
 Python 3.x
 requests library (Install via pip install requests)
 
-Usage
-To start fetching the data, simply run the script:
-python fetch_gw2_data.py
+Usage: To get the current meta team compositions, you can trigger it manually via the workflow_dispatch event, but by default, GitHub Actions runs this script automatically.
