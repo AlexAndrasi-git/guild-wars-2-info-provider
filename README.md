@@ -7,8 +7,8 @@ This project verifies and tracks:
 - World Boss Progress: Monitors the progress of world boss kills across the game world.
 - Gem/Coin Economy: Provides general information about the in-game economy, including Gem-to-Coin conversion rates.
 
-Requirements
-Python 3.x
-requests library (Install via pip install requests)
+Requirements:
+- Python 3.x
+- requests library
 
 Usage: To get the current meta team compositions, you can trigger it manually via the workflow_dispatch event, but by default, GitHub Actions runs this script automatically.
