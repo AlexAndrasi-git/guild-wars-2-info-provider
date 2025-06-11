@@ -1,4 +1,5 @@
 Guild Wars 2 API Data Fetcher
+
 In this project, we use the requests library to fetch general data from the Guild Wars 2 MMORPG Game open API. The project uses an existing player's Bearer token to retrieve information about some of the the player's progress and compares it with general game data.
 
 This project verifies and tracks:
